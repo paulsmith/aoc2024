@@ -9,9 +9,7 @@ pub fn main() !void {
 fn part1() !void {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
     const allocator = gpa.allocator();
-    defer {
-        if (gpa.deinit() == .leak) @panic("memory leak");
-    }
+    defer if (gpa.deinit() == .leak) @panic("memory leak");
     var lines = std.mem.tokenizeScalar(u8, input, '\n');
     var lista = std.ArrayList(i64).init(allocator);
     defer lista.deinit();
@@ -38,9 +36,7 @@ fn part1() !void {
 fn part2() !void {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
     const allocator = gpa.allocator();
-    defer {
-        if (gpa.deinit() == .leak) @panic("memory leak");
-    }
+    defer if (gpa.deinit() == .leak) @panic("memory leak");
     var lines = std.mem.tokenizeScalar(u8, input, '\n');
     var lista = std.ArrayList(i64).init(allocator);
     defer lista.deinit();
