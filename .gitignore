@@ -1,3 +1,4 @@
 .zig-cache/
 .envrc
 .direnv/
+input.txt
